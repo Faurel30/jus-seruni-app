@@ -13,7 +13,6 @@ const app = express();
 // development, so sharing the same environment variable causes a port clash.
 const port = Number(process.env.API_PORT || process.env.PORT || 4000);
 const jwtSecret = process.env.JWT_SECRET;
-const allowedOrigins = (process.env.CORS_ORIGINS || 'http://localhost:8443,http://localhost:5173')
 const allowedOrigins = (process.env.CORS_ORIGINS || '*')
   .split(',')
   .map((origin) => origin.trim())
@@ -36,7 +35,6 @@ app.use((req, res, next) => {
 
 app.use(cors({
   origin(origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) return callback(null, true);
     // Allow requests with no origin (like mobile apps, curl, server-to-server)
     if (!origin) return callback(null, true);
     // Allow wildcard
