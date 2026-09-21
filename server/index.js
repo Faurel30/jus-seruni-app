@@ -714,10 +714,13 @@ async function startServer() {
   });
 }
 
-startServer().catch((error) => {
-  logger.error('server_start_failed', error);
-  process.exit(1);
-});
+// In serverless environments like Vercel, the platform manages the HTTP server.
+if (process.env.VERCEL !== '1') {
+  startServer().catch((error) => {
+    logger.error('server_start_failed', error);
+    process.exit(1);
+  });
+}
 
 app.use((error, req, res, _next) => {
   logger.error('unhandled_request_error', error, { method: req.method, path: req.originalUrl });
@@ -726,3 +729,5 @@ app.use((error, req, res, _next) => {
     message: isCorsError ? error.message : 'Terjadi kesalahan pada server.',
   });
 });
+
+export default app;

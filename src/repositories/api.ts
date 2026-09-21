@@ -1,4 +1,8 @@
-const API_BASE_URL = "http://localhost:4000/api";
+export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || (
+  typeof window !== "undefined" && window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1"
+    ? "/api"
+    : "http://localhost:4000/api"
+);
 
 export function getAuthToken(): string {
   return sessionStorage.getItem("seruni_token") ?? "";
@@ -49,7 +53,7 @@ export async function apiFetch<T>(path: string, options: RequestInit = {}): Prom
         throw new Error("Respons API tidak valid. Pastikan backend sedang berjalan dan merespons format JSON.");
       }
     } else {
-      throw new Error("Respons API tidak valid. Pastikan backend sedang berjalan di http://localhost:4000.");
+      throw new Error("Respons API tidak valid. Pastikan backend sedang berjalan.");
     }
   }
 
