@@ -1,0 +1,9 @@
+{
+  "appId": "com.seruni.app",
+  "appName": "Jus-Seruni",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  }
+}
+

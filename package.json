@@ -7,6 +7,9 @@
     "dev": "node scripts/dev.js",
     "start": "node server/index.js",
     "build": "vite build",
+    "cap:build": "vite build && npx cap sync",
+    "cap:sync": "npx cap sync",
+    "cap:open": "npx cap open android",
     "preview": "vite preview",
     "format": "oxfmt",
     "server": "node server/index.js",
@@ -15,6 +18,7 @@
     "db:backup": "node server/backup.js"
   },
   "dependencies": {
+    "@capacitor/core": "^8.5.2",
     "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
@@ -26,6 +30,8 @@
     "recharts": "^3.10.1"
   },
   "devDependencies": {
+    "@capacitor/android": "^8.5.2",
+    "@capacitor/cli": "^8.5.2",
     "@tailwindcss/vite": "^4.0.0",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Jus Seruni</string>
+    <string name="title_activity_main">Jus Seruni</string>
+    <string name="package_name">com.seruni.app</string>
+    <string name="custom_url_scheme">com.seruni.app</string>
+</resources>
