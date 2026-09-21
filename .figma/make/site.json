@@ -1,0 +1,10 @@
+{
+  "description": "Manage sales, track daily income and expenses, and analyze business trends with an intuitive dashboard tailored for juice and snack vendors.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

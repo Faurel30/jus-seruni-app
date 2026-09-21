@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@300;400;500;600&display=swap');
+@import 'tailwindcss';
+
+@media print {
+  body * { visibility: hidden; }
+  #receipt, #receipt * { visibility: visible; }
+  #receipt { position: fixed; inset: 0 auto auto 0; width: 100%; max-width: none; box-shadow: none; }
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #fed7aa transparent;
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #fed7aa; border-radius: 9999px; }
+
+@theme inline {
+  --color-seruni-orange: #f97316;
+  --color-seruni-orange-light: #ffedd5;
+  --color-seruni-green: #22c55e;
+  --color-seruni-green-light: #dcfce7;
+  --color-seruni-yellow: #eab308;
+  --color-seruni-yellow-light: #fef9c3;
+  --color-seruni-bg: #fffbf5;
+}
