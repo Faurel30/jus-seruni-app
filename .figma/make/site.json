@@ -1,5 +1,6 @@
 {
-  "description": "Manage sales, track daily income and expenses, and analyze business trends with an intuitive dashboard tailored for juice and snack vendors.",
+  "title": "Jus Seruni",
+  "description": "Aplikasi Manajemen Bisnis Jus Seruni - Kasir, Laporan Penjualan, dan Pengeluaran",
   "robots": {
     "index": false
   },
