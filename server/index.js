@@ -14,6 +14,7 @@ const app = express();
 const port = Number(process.env.API_PORT || process.env.PORT || 4000);
 const jwtSecret = process.env.JWT_SECRET;
 const allowedOrigins = (process.env.CORS_ORIGINS || 'http://localhost:8443,http://localhost:5173')
+const allowedOrigins = (process.env.CORS_ORIGINS || '*')
   .split(',')
   .map((origin) => origin.trim())
   .filter(Boolean);
@@ -36,6 +37,19 @@ app.use((req, res, next) => {
 app.use(cors({
   origin(origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) return callback(null, true);
+    // Allow requests with no origin (like mobile apps, curl, server-to-server)
+    if (!origin) return callback(null, true);
+    // Allow wildcard
+    if (allowedOrigins.includes('*') || allowedOrigins.includes(origin)) return callback(null, true);
+    // Allow Capacitor mobile origins
+    if (
+      origin.startsWith('https://localhost') ||
+      origin.startsWith('http://localhost') ||
+      origin.startsWith('capacitor://') ||
+      origin.includes('.vercel.app')
+    ) {
+      return callback(null, true);
+    }
     return callback(new Error('Origin tidak diizinkan oleh CORS.'));
   },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
